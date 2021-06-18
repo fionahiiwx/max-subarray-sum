@@ -1,0 +1,20 @@
+## contiguous is like neighbouring indexing
+
+## exp:
+## input:-2, -3, 4, -1, -2, 1, 5, -3
+## input: 5
+## output: 7
+## (4-1-2+1+5)=7
+
+def max_subarray_sum(i_u, size):
+    max_so_far = 0
+    curr_max = 0
+    for i in range(0, (len(i_u)-size+1)):
+        for j in range(i, size+i):
+            curr_max += i_u[j]
+        max_so_far = max(max_so_far, curr_max)
+        curr_max = 0
+    return max_so_far
+i_u = [-2, -3, 4, -1, -2, 1, 5, -3]
+size = 5
+print(max_subarray_sum(i_u, size))
